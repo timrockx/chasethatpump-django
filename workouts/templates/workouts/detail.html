@@ -1,0 +1,167 @@
+{% extends "workouts/base.html" %}
+{% load static %}
+{% load social_share %}
+
+{% block content %}
+
+<div class="container">
+    <div class="content-section" style="background-color:#F0F0F0">
+
+        <div class="imageContainer">
+            <img src="{{ workout.image.url }}" style="width: 800px; height: 450px; margin-left: 140px; margin-top: 10px;">
+        </div>
+
+            <p class="text-center h2 pt-4 mb-3">{{ workout.name }}</p>
+            <hr>
+
+            {% if target == "Warmups" %}
+                <h4 class="text-center">Perform For {{ workout.rep_range }}</h4>
+            {% else %}
+                <div class="row">
+                    <div class="col">
+                        <h4 class="textstyle text-center">Sets</h4>
+                    </div>
+                    <div class="col">
+                        <h4 class="textstyle text-center">Reps</h4>
+                    </div>
+                    <div class="col">
+                        <h4 class="textstyle text-center">Equipment</h4>
+                    </div>
+                    <div class="w-100"></div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <h5 class="text-center">{{ workout.sets }}</h5>
+                    </div>
+                    <div class="col">
+                        <h5 class="text-center">{{ workout.rep_range }}</h5>
+                    </div>
+                    <div class="col">
+                        <h5 class="text-center">{{ workout.equipment }}</h5>
+                    </div>
+                    <div class="w-100"></div>
+                </div>
+            {% endif %}
+        </div>
+
+        <hr>
+
+        <div class="row">
+            <div class="col-md-6 col-lg-6 col-xl-6 col-sm-12 col-xs-12">
+               <div class="jumbotron" style="background-color: #F0F0F0">
+                  <h3 class="text-center">Description</h3>
+                  <p>{{ workout.description|safe|linebreaks }}</p>
+               </div>
+            </div>
+            <div class="col-md-6 col-lg-6 col-xl-6 col-sm-12 col-xs-12">
+               <div class="jumbotron" style="background-color: #F0F0F0">
+                  <h3 class="text-center">Instructions</h3>
+                  <p>{{ workout.instructions|safe|linebreaks }}</p>
+               </div>
+            </div>
+        </div>
+
+        {% if target == "Chest" or target == "Shoulders" %}
+        <hr>
+        <h3 class="text-center">Incorporate these warmups before performing your {{ workout.name }}.</h3>
+        <div class="row" style="padding: 15px;">
+            <div class="col-lg-4 col-md-12 mb-lg-0 mb-4">
+                 <div class="card hoverable">
+                    <div class="card-body">
+                       <h5 class="text-center"><a href="/worlds-greatest-stretch">World's Greatest Stretch</a></h5>
+                       <p class="card-title text-muted font-small mt-3 mb-2">
+                        The World's Greatest Stretch will help loosen your thoracic spine, and increase general mobility before loading your
+                        upper body heavily.
+                        </p>
+                    </div>
+                 </div>
+              </div>
+              <div class="col-lg-4 col-md-12 mb-lg-0 mb-4">
+                 <div class="card hoverable">
+                    <div class="card-body">
+                       <h5 class="text-center"><a href="/shoulder-dislocations">Shoulder Dislocations</a></h5>
+                       <p class="card-title text-muted font-small mt-3 mb-2">
+                        Shoulder Dislocations warmup your shoulder joints and improve flexibility, making the likelihood of injury significantly
+                        lower.
+                       </p>
+                    </div>
+                 </div>
+              </div>
+              <div class="col-lg-4 col-md-12 mb-l  0 mb-4">
+                 <div class="card hoverable">
+                    <div class="card-body">
+                       <h5 class="text-center"><a href="/rotator-cuff-warmups">Rotator Cuff Warmups</a></h5>
+                       <p class="card-title text-muted font-small mt-3 mb-2">
+                        The rotator cuff is one of the most commonly injured body part, but by properly warming it up, we can avoid pain and
+                        strengthen those muscles.
+                       </p>
+                    </div>
+                 </div>
+              </div>
+        </div>
+      {% endif %}
+
+
+
+
+        {% if workout.video %}
+            <hr>
+            <div class="row">
+                <div class="col d-flex justify-content-center">
+                    <div class="card" style="width: 50rem;">
+                      <iframe width="800" height="400" src="{{ workout.video }}"" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                      <div class="card-body">
+                        <h5 class="card-title text-center">Keep Improving</h5>
+                        <p class="card-text text-center">For more in-depth instructions and tips, watch this
+                            video on improving your {{ workout.name }}.</p>
+                      </div>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+
+
+        <hr>
+        <div class="text-center">
+            <h4>Share this workout with your friends!</h4>
+            <div class="row justify-content-center" style="padding-bottom:10px;">
+                {% post_to_facebook object_or_url "Share this workout on Facebook!" %}
+                {% post_to_twitter "Check out this workout: {{ workout.name }}." object_or_url "Share this workout on Twitter!" %}
+            </div>
+        </div>
+
+
+
+
+
+    </div>
+</div>
+
+
+{% endblock content %}
+
+
+
+<div class="row">
+  <div class="col-md-12 col-xl-12 d-flex justify-content-center">
+     <div class="d-inline">
+        <label for="calories">Calories</label>
+        <span id="calories" class="border circle">{{recipe.calories}} Kcal</span>
+     </div>
+     <div style="border-left: 2px solid green;height: 40px; margin-left:5px;"></div>
+     <div class="d-inline">
+        <label for="carbs" class="mx-2">Carbs</label>
+        <span id="carbs" class="border circle">{{recipe.carbs}} g</span>
+     </div>
+     <div style="border-left: 2px solid green;height: 40px; margin-left:5px;"></div>
+     <div class="d-inline">
+        <label for="fat" class="mx-2">Fat</label>
+        <span id="fat" class="border circle">{{recipe.fat}} g</span>
+     </div>
+     <div style="border-left: 2px solid green;height: 40px; margin-left:5px;"></div>
+     <div class="d-inline">
+        <label for="protein" class="mx-2">Protein</label>
+        <span id="protein" class="border circle">{{recipe.protein}} g</span>
+     </div>
+  </div>
+</div>

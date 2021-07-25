@@ -1,0 +1,101 @@
+{% extends "workouts/base.html" %}
+{% load static %}
+
+{% block content %}
+
+<div class="container">
+    <div class="text-center">
+        <h1>Chase that Pump</h1>
+
+        <hr>
+
+        <figure class="text-center">
+            <blockquote class="blockquote">
+                <p>"The greatest feeling you can get in a gym or the most satisfying feeling you can get in the gym is the pump."</p>
+            </blockquote>
+            <figcaption class="blockquote-footer">Arnold Schwarzenegger</figcaption>
+        </figure>
+
+        <h5 class="">Find the workouts you love and <strong>CHASE THAT PUMP!</strong></h5>
+
+        <div class="media">
+            <img src="{{ "/media/arnold.jpg" }}" class="rounded mx-auto d-block" style="padding-bottom: 15px; height: 100%; width: 100%; object-fit: cover;" alt="home">
+        </div>
+    </div>
+
+    <hr>
+
+    <div class="text-center">
+        <h2 class="list-heading">MAKE IT A HABIT</h2>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6 col-lg-6 col-xl-6 col-sm-12 col-xs-12">
+           <div class="jumbotron" style="background-color: #f5f5f5">
+              <h4 class="text-center">DON'T BE HALF-HEARTED</h4>
+              <p>Give the gym everything you've got. Be consistent. Be diligent. Exert yourself.
+            Don't leave any doubt in your mind that you tried as hard as you could.</p>
+           </div>
+        </div>
+        <div class="col-md-6 col-lg-6 col-xl-6 col-sm-12 col-xs-12">
+           <div class="jumbotron" style="background-color: #f5f5f5">
+              <h4 class="text-center">BE UNCOMFORTABLE</h4>
+              <p>Of course it’s hard. It’s supposed to be hard. If it were easy, everybody
+                would do it. Hard is what makes it great. <strong>No pain, no gain.</strong></p>
+           </div>
+        </div>
+    </div>
+
+    <hr>
+
+    <div class="text-center">
+        <h3 class="list-heading">GET FAMILIAR</h3>
+    </div>
+
+    <div class="row" style="padding-bottom: 15px;">
+        <div class="col-lg-4 col-md-12 mb-lg-0 mb-4">
+             <div class="card hoverable">
+                <img class="card-img-top" src="/media/dumbells.jpg" alt="dumbbells image">
+                <div class="card-body">
+                   <h5 class="text-center">Dumbbells</h5>
+                   <p class="card-title text-muted font-small mt-3 mb-2">
+                    Dumbells should be a staple in any workout routine. They are easily accessible and incredibly
+                    multi-functional, from a <a href="/incline-dumbbell-press">traditional dumbbell press</a>, to bulgarian split squats.
+                    </p>
+                </div>
+             </div>
+          </div>
+          <div class="col-lg-4 col-md-12 mb-lg-0 mb-4">
+             <div class="card hoverable">
+                <img class="card-img-top" src="/media/cables.jpg" alt="cable machine">
+                <div class="card-body">
+                   <h5 class="text-center">Cables</h5>
+                   <p class="card-title text-muted font-small mt-3 mb-2">Cable machines are excellent for accessory
+                    exercises to go alongside compound lifts. With constant tension throughout the ROM, they are ideal for
+                    hypertrophy. Shown above are <a href="/cable-chest-fly">cable chest flys</a>.</p>
+                </div>
+             </div>
+          </div>
+          <div class="col-lg-4 col-md-12 mb-lg-0 mb-4">
+             <div class="card hoverable">
+                <img class="card-img-top" src="/media/cbum.jpg" alt="barbells">
+                <div class="card-body">
+                   <h5 class="text-center">Barbells</h5>
+                   <p class="card-title text-muted font-small mt-3 mb-2">Barbells are often used for compound lifts as they
+                   are easier to progressively overload with weight, in addition to greater stability than dumbbells. Common exercises
+                   performed with barbells include the <a href="/barbell-bench-press">bench press</a>,
+                    deadlift, and <a href="/overhead-military-press">overhead press</a>.</p>
+                </div>
+             </div>
+          </div>
+      </div>
+
+      <hr>
+
+
+
+</div>
+
+{% endblock content %}
+
+

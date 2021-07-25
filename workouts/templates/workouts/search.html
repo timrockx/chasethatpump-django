@@ -1,0 +1,113 @@
+{% extends "workouts/base.html" %}
+
+{% block content %}
+
+<div class="container h-50 d-flex justify-content-center align-items-center">
+            <!-- Grid row -->
+    <div class="row pt-1 mt-1" style="padding-bottom: 15px;">
+       <!-- Grid column -->
+       <div class="col-md-12">
+          <div class="card hoverable">
+             <div class="card-body">
+                <h3>
+                  {% if total == 0 %}
+                     Sorry! Our database doesn't have any workouts that fit your search now. Don't worry,
+                     we're always updating! If you have a workout suggestion, let us know in our
+                     <a href="{% url 'contact' %}">feedback form!</a>
+                  {% else %}
+                     {{ target }} {{ query|capfirst }} Workouts: {{ total }} Result(s) Found</h3>
+                {% endif %}
+             </div>
+          </div>
+       </div>
+       <!-- Grid column -->
+    </div>
+    <!-- Grid row -->
+</div>
+<div class="jumbotron" style="padding-bottom: 50px;">
+     <div class="container">
+           <!-- Grid row -->
+           <div class="row">
+            {% for workout in results %}
+              <!-- Grid column -->
+              <div class="col-lg-4 col-md-12 mb-lg-0 mb-4" style='padding-bottom:15px;'>
+                 <!-- Card -->
+                 <div class="card hoverable">
+                    <!-- Card image -->
+                    <img class="card-img-top" src="{{ workout.image.url }}" alt="">
+                    <!-- Card content -->
+                    <div class="card-body">
+                       <!-- Title -->
+                       <a href="{{ workout.get_url }}" class="black-text">
+                        <h5 class="text-center">
+                           {{ workout.name }}
+                        </h5></a>
+                       <!-- Text -->
+                       <p class="card-title text-muted font-small mt-2 mb-2">{{ workout.description|safe|slice:":150" }}...</p>
+                       <div class="row justify-content-center">
+                            <a type="button" class="btn btn-flat text-primary p-0 mx-0" href="{{ workout.get_url }}">Read More</a>
+                       </div>
+                    </div>
+                 </div>
+                 <!-- Card -->
+              </div>
+                {% endfor %}
+            </div>
+
+       </div>
+       <div class="container">
+          <nav aria-label="Search Results Navigation" style="padding-bottom: 15px;">
+
+            {% if results.has_previous %}
+               <a class="btn btn-outline-dark mb-4" href="?{{topic}}=on&search={{query}}&page=1">First</a>
+               <a class="btn btn-outline-dark mb-4" href="?{{target}}=on&search={{query}}&page={{results.previous_page_number}}">Previous</a>
+            {% endif %}
+
+            {% for number in results.paginator.page_range %}
+               <a class="btn btn-outline-dark mb-4" href="?{{target}}=on&search={{query}}&page={{number}}">{{ number }}</a>
+            {% endfor %}
+
+            {% if results.has_next %}
+               <a class="btn btn-outline-dark mb-4" href="?{{target}}=on&search={{query}}&page={{results.next_page_number}}">Next</a>
+               <a class="btn btn-outline-dark mb-4" href="?{{target}}=on&search={{query}}&page={{results.paginator.num_pages}}">Last</a>
+            {% endif %}
+
+            </nav>
+      </div>
+
+
+         <!-- <ul class="pagination justify-content-center">
+
+         {% if results.has_previous %}
+            <li class="page-item">
+               <a class="btn btn-outline-dark mb-4" href="?{{topic}}=on&search={{query}}&page=1">First</a>
+            </li>
+            <li class="page-item">
+               <a class="btn btn-outline-dark mb-4" href="?{{target}}=on&search={{query}}&page={{results.previous_page_number}}">Previous</a>
+            </li>
+         {% endif %}
+
+         {% for number in results.paginator.page_range %}
+            <li class="page-item">
+               <a class="btn btn-outline-dark mb-4" href="?{{target}}=on&search={{query}}&page={{number}}">{{ number }}</a>
+            </li>
+         {% endfor %}
+
+         {% if results.has_next %}
+            <li class="page-item">
+               <a class="btn btn-outline-dark mb-4" href="?{{target}}=on&search={{query}}&page={{results.next_page_number}}">Next</a>
+            </li>
+            <li class="page-item">
+               <a class="btn btn-outline-dark mb-4" href="?{{target}}=on&search={{query}}&page={{results.paginator.num_pages}}">Last</a>
+            </li>
+         {% endif %}
+
+         </ul> -->
+
+
+   </div>
+
+
+
+
+{% endblock content %}

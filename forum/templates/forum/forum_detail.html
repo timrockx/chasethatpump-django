@@ -1,0 +1,33 @@
+{% extends "workouts/base.html" %}
+
+{% block content %}
+
+<div class="container">
+    <div class="content-section" style="background-color:#f5f5f5">
+    <h3> {{ object.title }} </h3>
+    <p>{{ object.description }}</p>
+    <small><a href="{% url 'profile' object.user.id %}">{{ object.user.username }}</a>| {{ object.created_at|date:"F d, Y" }}</small>
+
+    <hr>
+
+    {% for comment in comments %}
+        {% if comment.forum == forum %}
+        <div class="content-section">
+            <p>{{ comment.description }}</p>
+            <small>{{ comment.user.username }} | {{ comment.created_at|date:"F d, Y" }}</small>
+        </div>
+        {% endif %}
+    {% endfor %}
+
+    <hr>
+    <a href="{% url 'forum-comment' object.id %}" class="btn btn-outline-info">Leave a Comment</a>
+
+    {% if object.user == user %}
+        <a href="{% url 'forum-update' object.id %}" class="btn btn-white">Update Forum</a>
+        <a href="{% url 'forum-delete' object.id %}" class="btn btn-white">Delete Forum</a>
+    {% endif %}
+
+    </div>
+</div>
+
+{% endblock content %}
