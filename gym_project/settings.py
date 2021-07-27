@@ -38,7 +38,6 @@ INSTALLED_APPS = [
     'users.apps.UsersConfig',
     'forum.apps.ForumConfig',
     'crispy_forms',
-    'google_analytics',
     'django_social_share',
     'django.contrib.admin',
     'django.contrib.auth',
