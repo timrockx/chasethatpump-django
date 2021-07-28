@@ -14,7 +14,7 @@
         {% if comment.forum == forum %}
         <div class="content-section">
             <p>{{ comment.description }}</p>
-            <small>{{ comment.user.username }} | {{ comment.created_at|date:"F d, Y" }}</small>
+            <small><a href="{% url 'profile' comment.user.id %}">{{ comment.user.username }}</a> | {{ comment.created_at|date:"F d, Y" }}</small>
         </div>
         {% endif %}
     {% endfor %}
