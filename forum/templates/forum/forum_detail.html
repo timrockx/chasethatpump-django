@@ -5,7 +5,7 @@
 <div class="container">
     <div class="content-section" style="background-color:#f5f5f5">
     <h3> {{ object.title }} </h3>
-    <p>{{ object.description }}</p>
+    <p>{{ object.description|safe|linebreaks }}</p>
     <small><a href="{% url 'profile' object.user.id %}">{{ object.user.username }}</a>| {{ object.created_at|date:"F d, Y" }}</small>
 
     <hr>
