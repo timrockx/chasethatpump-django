@@ -70,7 +70,8 @@
 
         {% if target == "Chest" or target == "Shoulders" %}
         <hr>
-        <h3 class="text-center">Incorporate these warmups before performing your {{ workout.name }}.</h3>
+        <h3 class="text-center">Dynamic stretches have proven benefits like decreasing risk of injury, and increasing
+            flexibility, and performance during workouts.</h3>
         <div class="row" style="padding: 15px;">
             <div class="col-lg-4 col-md-12 mb-lg-0 mb-4">
                  <div class="card hoverable">
@@ -109,8 +110,6 @@
       {% endif %}
 
 
-
-
         {% if workout.video %}
             <hr>
             <div class="row">
@@ -118,9 +117,8 @@
                     <div class="card" style="width: 50rem;">
                       <iframe width="800" height="400" src="{{ workout.video }}"" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                       <div class="card-body">
-                        <h5 class="card-title text-center">Keep Improving</h5>
-                        <p class="card-text text-center">For more in-depth instructions and tips, watch this
-                            video on improving your {{ workout.name }}.</p>
+                        <h5 class="card-title text-center">Be willing to learn and improve constantly in the gym!</h5>
+                        <p class="card-text text-center">Check out this video for an in-depth demonstration on performing the {{ workout.name }}.</p>
                       </div>
                     </div>
                 </div>
