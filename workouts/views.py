@@ -3,6 +3,7 @@ from django.db.models import Q
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from .models import Workout
 
+# comment
 
 def home(request):
     total_workouts = Workout.objects.all().count()
